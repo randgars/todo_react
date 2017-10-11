@@ -2,20 +2,20 @@ import React, {
   Component
 } from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { bindActionCreators } from 'redux';
 import {} from '../actions/';
-import Main from '../components/App';
+import Main from '../components/home/Home';
 
-class App extends Component {
+class Home extends Component {
   render() {
     const { actions } = this.props;
     return <Main actions={actions} />;
   }
 }
 
-App.propTypes = {
+Home.propTypes = {
   actions: PropTypes.shape({})
 };
 
@@ -30,4 +30,4 @@ function mapDispatchToProps(dispatch) {
   return actionMap;
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
