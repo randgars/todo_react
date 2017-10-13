@@ -8,6 +8,8 @@ $md-secondary-color: $md-grey-400;
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2em;
+}
+.navItems {
+  display: flex;
+  align-items: center;
 }

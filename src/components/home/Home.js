@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {
+  Component
+} from 'react';
 import '../../styles/home/home.scss';
 
-class HomeComponent extends React.Component {
+class HomeComponent extends Component {
 
   render() {
     return (

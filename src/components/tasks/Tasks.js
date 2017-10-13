@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {
+  Component
+} from 'react';
 import '../../styles/tasks/tasks.scss';
 
-class TasksComponent extends React.Component {
+class TasksComponent extends Component {
 
   render() {
     return (
@@ -12,7 +14,7 @@ class TasksComponent extends React.Component {
   }
 }
 
-TasksComponent.displayName = 'Tasks';
+TasksComponent.displayName = 'TasksComponent';
 TasksComponent.propTypes = {};
 TasksComponent.defaultProps = {};
 

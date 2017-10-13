@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  Component
+} from 'react';
 import '../styles/app.scss';
 import { Route } from 'react-router-dom';
 
@@ -11,44 +13,24 @@ const navItems = [{
   label: 'Home',
   to: '/',
   exact: true,
-  icon: 'inbox',
+  icon: 'home',
 }, {
   label: 'Tasks',
   to: '/tasks',
-  icon: 'star',
+  icon: 'playlist_add_check',
+}, {
+  label: 'Lists',
+  to: '/lists',
+  icon: 'format_list_numbered',
 }];
 
-class AppComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.getCurrentTitle = this.getCurrentTitle.bind(this);
-    this.state = {
-      toolbarTitle: this.getCurrentTitle()
-    };
-  }
-
-  componentWillReceiveProps() {
-    this.setState({
-      toolbarTitle: this.getCurrentTitle()
-    });
-  }
-
-  getCurrentTitle() {
-    let lastSection = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
-    if (lastSection === '') {
-      lastSection = 'Home';
-    } else {
-      lastSection = lastSection[0].toUpperCase() + lastSection.substring(1);
-    }
-    return lastSection;
-  }
-
+class AppComponent extends Component {
   render() {
     return (
       <Route render={({ location }) => (
         <NavigationDrawer
           drawerTitle="ToDo"
-          toolbarTitle={this.state.toolbarTitle}
+          toolbarTitle={this.props.toolbarTitle}
           navItems={navItems.map((props, index) => {
             return (
               <NavLink {...props} key={index} />
@@ -60,8 +42,7 @@ class AppComponent extends React.Component {
         >
           <AppRoutes location={location} />
         </NavigationDrawer>
-      )}
-    />
+      )}/>
     );
   }
 }

@@ -9,9 +9,33 @@ import {} from '../actions/';
 import Main from '../components/App';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.getCurrentTitle = this.getCurrentTitle.bind(this);
+    this.state = {
+      toolbarTitle: this.getCurrentTitle()
+    };
+  }
+
+  componentWillReceiveProps() {
+    this.setState({
+      toolbarTitle: this.getCurrentTitle()
+    });
+  }
+
+  getCurrentTitle() {
+    let lastSection = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
+    if (lastSection === '') {
+      lastSection = 'Home';
+    } else {
+      lastSection = lastSection[0].toUpperCase() + lastSection.substring(1);
+    }
+    return lastSection;
+  }
+
   render() {
     const { actions } = this.props;
-    return <Main actions={actions} />;
+    return <Main actions={actions} toolbarTitle={this.state.toolbarTitle}/>;
   }
 }
 
