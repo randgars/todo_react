@@ -19,8 +19,8 @@ const navItems = [{
   to: '/tasks',
   icon: 'playlist_add_check',
 }, {
-  label: 'Lists',
-  to: '/lists',
+  label: 'Notes',
+  to: '/notes',
   icon: 'format_list_numbered',
 }];
 

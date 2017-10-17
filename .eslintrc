@@ -20,7 +20,7 @@
     "react/jsx-space-before-closing": ["off"],
     "react/prefer-stateless-function": ["off"],
     "react/self-closing-comp": ["off"],
-    "no-underscore-dangle": [ "error", { "allowAfterThis": true }],
+    "no-underscore-dangle": ["off"],
     "import/no-unresolved": ["error", {
         "ignore": [
           "config",
@@ -35,6 +35,8 @@
     "eol-last": "off",
     "import/first": "off",
     "class-methods-use-this": "warn",
-    "semi": "warn"
+    "semi": "warn",
+    "arrow-parens": "off",
+    "no-plusplus": "off"
   }
 }

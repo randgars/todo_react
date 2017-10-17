@@ -71,6 +71,7 @@
     "history": "^4.7.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
+    "react-color": "^2.13.8",
     "react-dom": "^16.0.0",
     "react-hot-loader": "^3.0.0",
     "react-md": "^1.1.9",

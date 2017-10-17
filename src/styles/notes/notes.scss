@@ -1,0 +1,15 @@
+.notes-component {
+  display: flex;
+  flex-direction: column;
+  .notes-component__cpanel {
+    padding: 20px;
+  }
+  .notes-component__container {
+    padding: 0 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    position: relative;
+  }
+}

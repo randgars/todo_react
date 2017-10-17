@@ -1,0 +1,49 @@
+.note-component__wrapper {
+  position: absolute;
+}
+.note-component {
+  width: 300px;
+  margin: 10px;
+  position: relative;
+  transition: height 0.1s;
+  .note-component__color-picker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .note-component__circle-picker {
+      width: 100% !important;
+    }
+  }
+}
+.note-component_full {
+  height: 400px;
+}
+.note-component_min {
+  height: 64px;
+}
+
+::-webkit-scrollbar {
+  width: 3px; /* 1 - вертикальный скроллбар */
+}
+::-webkit-scrollbar:horizontal {
+  height: 3px; /* 1 - горизонтальный скроллбар */
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+::-webkit-scrollbar-track {
+  background: #A8CFD4;/* 3 - трек */
+}
+::-webkit-scrollbar-track-piece {
+  background: #A8CFD4; /* 4 – видимая часть трека */
+}
+::-webkit-scrollbar-thumb {
+  background: #00BCD4;
+  border-radius: 10px;
+}
