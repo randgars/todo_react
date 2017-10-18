@@ -10,12 +10,12 @@ import Toolbar from './toolbar';
 import Note from './noteContent';
 
 const colors = [
-  '#F44336', '#E91E63', '#9C27B0',
-  '#673AB7', '#3F51B5', '#2196F3',
-  '#03A9F4', '#00BCD4', '#009688',
-  '#4CAF50', '#8BC34A', '#CDDC39',
-  '#FFEB3B', '#FFC107', '#FF9800',
-  '#FF5722', '#607D8B', '#FFFFFF'
+  '#EF9A9A', '#F48FB1', '#CE93D8',
+  '#B39DDB', '#9FA8DA', '#90CAF9',
+  '#81D4FA', '#80DEEA', '#80CBC4',
+  '#A5D6A7', '#C5E1A5', '#E6EE9C',
+  '#FFF59D', '#FFE082', '#FFCC80',
+  '#FFAB91', '#B0BEC5', '#FFFFFF'
 ]
 
 class NoteComponent extends Component {
@@ -25,6 +25,8 @@ class NoteComponent extends Component {
     this.openColorPanel = this.openColorPanel.bind(this);
     this.noteResize = this.noteResize.bind(this);
     this.mouseDown = this.mouseDown.bind(this);
+    this.mouseMove = this.mouseMove.bind(this);
+    this.mouseUp = this.mouseUp.bind(this);
     this.state = {
       displayColorPanel: false,
       isRollUp: false
@@ -57,9 +59,27 @@ class NoteComponent extends Component {
   }
 
   mouseDown() {
-    debugger
-    this.notePaper.style.left = '50px';
-    this.notePaper.style.top = '50px';
+    this.setState({
+      offsetX: event.offsetX,
+      offsetY: event.offsetY
+    })
+    this.props.notesContainer.addEventListener('mousemove', this.mouseMove);
+    document.addEventListener('mouseup', this.mouseUp);
+    this.props.notesContainer.childNodes.forEach((item) => (item.style.zIndex = '1'));
+  }
+
+  mouseMove() {
+    const cursorX = event.clientX - this.props.notesContainer.offsetLeft;
+    const cursorY = event.clientY - this.props.notesContainer.offsetTop;
+    this.notePaper.style.position = 'absolute';
+    this.notePaper.style.zIndex = '999';
+    this.notePaper.style.left = (cursorX - this.state.offsetX) + 'px';
+    this.notePaper.style.top = (cursorY - this.state.offsetY) + 'px';
+  }
+
+  mouseUp() {
+    this.props.notesContainer.removeEventListener('mousemove', this.mouseMove);
+    document.removeEventListener('mouseup', this.mouseUp);
   }
 
   render() {
@@ -71,7 +91,8 @@ class NoteComponent extends Component {
       noteValue,
       bgColor,
       setNoteTitle,
-      noteTitle
+      noteTitle,
+      isDraggableNotes
     } = this.props;
     return (
       <div ref={(ref) => (this.notePaper = ref)} className="note-component__wrapper">
@@ -89,6 +110,8 @@ class NoteComponent extends Component {
             noteTitle={noteTitle}
             noteResize={this.noteResize}
             mouseDown={this.mouseDown}
+            mouseUp={this.mouseUp}
+            isDraggableNotes={isDraggableNotes}
             />
           {
             !this.state.isRollUp &&

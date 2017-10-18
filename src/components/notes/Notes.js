@@ -23,11 +23,12 @@ class NotesComponent extends Component {
             Add note
           </Button>
         </div>
-        <div className="notes-component__container">
+        <div ref={(ref) => (this.notesContainer = ref)} className="notes-component__container">
           {
             notesArray &&
             notesArray.map((item, index) => (
               <Note
+                ref={(ref) => (this.notePaper = ref)}
                 key={index}
                 index={index}
                 uniqueKey={item.noteKey}
@@ -38,6 +39,7 @@ class NotesComponent extends Component {
                 noteTitle={item.noteTitle}
                 noteValue={item.noteValue}
                 bgColor={item.color}
+                notesContainer={this.notesContainer}
               />
             ))
           }

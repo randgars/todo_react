@@ -8,7 +8,7 @@ class HomeComponent extends Component {
   render() {
     return (
       <div className="home-component">
-        Please edit src\components\HomeComponent.js to update this component!
+        home
       </div>
     );
   }

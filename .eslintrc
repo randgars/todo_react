@@ -35,7 +35,7 @@
     "eol-last": "off",
     "import/first": "off",
     "class-methods-use-this": "warn",
-    "semi": "warn",
+    "semi": "off",
     "arrow-parens": "off",
     "no-plusplus": "off"
   }

@@ -18,6 +18,10 @@ class ToolbarComponent extends Component {
     };
   }
 
+  componentDidMount() {
+    this.noteToolbar.addEventListener('mousedown', this.props.mouseDown)
+  }
+
   onChange() {
     this.setState({
       changeNoteTitle: false
@@ -45,43 +49,47 @@ class ToolbarComponent extends Component {
   }
 
   render() {
-    const {bgColor, openColorPanel, setNoteTitle, uniqueKey, mouseDown} = this.props;
+    const {bgColor, openColorPanel, setNoteTitle, uniqueKey} = this.props;
     return (
-      <Toolbar
-        onMouseDown={mouseDown}
-        title={this.state.changeNoteTitle ?
-          <TextField
-            id="floating-center-title"
-            block
-            lineDirection="center"
-            placeholder="enter a new title"
-            onChange={(value) => (setNoteTitle(uniqueKey, value))}
-            ref={(ref) => (this.titleFiled = ref)}
-            onBlur={this.onChange}
-          /> : this.props.noteTitle
-        }
-        actions={!this.state.changeNoteTitle ? [
-          <Button
-            id="menu-button"
-            icon
-            onClick={this.rollUpNote}
-          >
-            {this.state.isRollUp ? 'expand_more' : 'expand_less'}
-          </Button>,
-          <MenuButton
-            id="menu-button"
-            icon
-            menuItems={[
-              <ListItem key={1} onClick={this.changeNoteTitle} primaryText="Change title" />,
-              <ListItem key={2} onClick={openColorPanel} primaryText="Cnange color" />,
-              <ListItem key={3} onClick={this.deleteNote} primaryText="Delete" />,
-            ]}
-          >
-            more_vert
-          </MenuButton>
-        ] : null}
-        style={{backgroundColor: `rgba(${bgColor.r}, ${bgColor.g}, ${bgColor.b}, ${bgColor.a}`}}
-      />
+      <div
+        ref={(ref) => (this.noteToolbar = ref)}
+      >
+        <Toolbar
+          title={this.state.changeNoteTitle ?
+            <TextField
+              id="floating-center-title"
+              block
+              lineDirection="center"
+              placeholder="enter a new title"
+              onChange={(value) => (setNoteTitle(uniqueKey, value))}
+              ref={(ref) => (this.titleFiled = ref)}
+              onBlur={this.onChange}
+            /> : this.props.noteTitle
+          }
+          actions={!this.state.changeNoteTitle ? [
+            <Button
+              id="menu-button"
+              icon
+              onClick={this.rollUpNote}
+            >
+              {this.state.isRollUp ? 'expand_more' : 'expand_less'}
+            </Button>,
+            <MenuButton
+              id="menu-button"
+              icon
+              menuItems={[
+                <ListItem key={1} onClick={this.changeNoteTitle} primaryText="Change title" />,
+                <ListItem key={2} onClick={openColorPanel} primaryText="Cnange color" />,
+                <ListItem key={3} onClick={this.deleteNote} primaryText="Delete" />,
+              ]}
+            >
+              more_vert
+            </MenuButton>
+          ] : null}
+          className="note-component__toolbar"
+          style={{backgroundColor: `rgba(${bgColor.r}, ${bgColor.g}, ${bgColor.b}, ${bgColor.a}`}}
+        />
+      </div>
     );
   }
 }

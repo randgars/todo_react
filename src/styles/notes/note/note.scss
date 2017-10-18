@@ -1,11 +1,14 @@
-.note-component__wrapper {
-  position: absolute;
-}
 .note-component {
   width: 300px;
   margin: 10px;
   position: relative;
   transition: height 0.1s;
+  background-color: #fff;
+  // .note-component__toolbar {
+  //   &:focus {
+  //     cursor: move;
+  //   }
+  // }
   .note-component__color-picker {
     position: absolute;
     top: 0;
@@ -20,30 +23,16 @@
       width: 100% !important;
     }
   }
+  ::-webkit-scrollbar {
+    width: 3px; /* 1 - вертикальный скроллбар */
+  }
+  ::-webkit-scrollbar:horizontal {
+    height: 3px; /* 1 - горизонтальный скроллбар */
+  }
 }
 .note-component_full {
   height: 400px;
 }
 .note-component_min {
   height: 64px;
-}
-
-::-webkit-scrollbar {
-  width: 3px; /* 1 - вертикальный скроллбар */
-}
-::-webkit-scrollbar:horizontal {
-  height: 3px; /* 1 - горизонтальный скроллбар */
-}
-::-webkit-scrollbar-button {
-  display: none;
-}
-::-webkit-scrollbar-track {
-  background: #A8CFD4;/* 3 - трек */
-}
-::-webkit-scrollbar-track-piece {
-  background: #A8CFD4; /* 4 – видимая часть трека */
-}
-::-webkit-scrollbar-thumb {
-  background: #00BCD4;
-  border-radius: 10px;
 }

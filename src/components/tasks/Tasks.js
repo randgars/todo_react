@@ -8,7 +8,7 @@ class TasksComponent extends Component {
   render() {
     return (
       <div className="tasks-component">
-        Please edit src\components\Tasks.js to update this component!!
+        tasks
       </div>
     );
   }
