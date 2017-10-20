@@ -1,4 +1,11 @@
-import { ADD_NOTE, DELETE_NOTE, SET_NOTE_VALUE, SET_NOTE_COLOR, SET_NOTE_TITLE } from '../actions/const';
+import {
+  GET_NOTES_SUCCESS,
+  ADD_NOTE,
+  DELETE_NOTE,
+  SET_NOTE_VALUE,
+  SET_NOTE_COLOR,
+  SET_NOTE_TITLE
+} from '../actions/const';
 
 const initialState = {
   notesArray: []
@@ -7,6 +14,9 @@ const initialState = {
 export default function noteReducers(state = initialState, action) {
   let tempNotesArray = [];
   switch (action.type) {
+    case GET_NOTES_SUCCESS:
+      return {...state, notesArray: action.notes};
+
     case ADD_NOTE:
       return {...state, notesArray: [...state.notesArray, action.note]};
 

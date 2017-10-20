@@ -15,9 +15,9 @@ const navItems = [{
   exact: true,
   icon: 'home',
 }, {
-  label: 'Tasks',
-  to: '/tasks',
-  icon: 'playlist_add_check',
+  label: 'Events',
+  to: '/events',
+  icon: 'event_note',
 }, {
   label: 'Notes',
   to: '/notes',

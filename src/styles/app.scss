@@ -1,3 +1,4 @@
+@import 'scroll';
 @import '../../node_modules/react-md/src/scss/react-md';
 
 $md-primary-color: $md-cyan-500;
@@ -12,24 +13,4 @@ body {
 .navItems {
   display: flex;
   align-items: center;
-}
-
-::-webkit-scrollbar {
-  width: 7px; /* 1 - вертикальный скроллбар */
-}
-::-webkit-scrollbar:horizontal {
-  height: 7px; /* 1 - горизонтальный скроллбар */
-}
-::-webkit-scrollbar-button {
-  display: none;
-}
-::-webkit-scrollbar-track {
-  display: none;
-}
-::-webkit-scrollbar-track-piece {
-  display: none;
-}
-::-webkit-scrollbar-thumb {
-  background: #00BCD4;
-  border-radius: 2px;
 }

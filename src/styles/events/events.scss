@@ -1,0 +1,14 @@
+@import '../cpanel';
+
+.events-component {
+  .events-component__cpanel {
+    @extend .cpanel;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .events-component__container {
+    height: calc(100vh - 140px);
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+}

@@ -3,3 +3,7 @@ export const DELETE_NOTE = 'DELETE_NOTE';
 export const SET_NOTE_VALUE = 'SET_NOTE_VALUE';
 export const SET_NOTE_COLOR = 'SET_NOTE_COLOR';
 export const SET_NOTE_TITLE = 'SET_NOTE_TITLE';
+
+export const GET_NOTES_REQUEST = 'GET_NOTES_REQUEST';
+export const GET_NOTES_SUCCESS = 'GET_NOTES_SUCCESS';
+export const GET_NOTES_FAILURE = 'GET_NOTES_FAILURE';

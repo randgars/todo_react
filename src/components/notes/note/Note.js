@@ -88,10 +88,8 @@ class NoteComponent extends Component {
       deleteNote,
       index,
       setNoteValue,
-      noteValue,
-      bgColor,
       setNoteTitle,
-      noteTitle,
+      item,
       isDraggableNotes
     } = this.props;
     return (
@@ -101,13 +99,13 @@ class NoteComponent extends Component {
           className={`note-component note-component_${this.state.isRollUp ? 'min' : 'full'}`}
         >
           <Toolbar
-            bgColor={bgColor}
+            bgColor={item.color}
             uniqueKey={uniqueKey}
             deleteNote={deleteNote}
             openColorPanel={this.openColorPanel}
             noteIndex={index}
             setNoteTitle={setNoteTitle}
-            noteTitle={noteTitle}
+            noteTitle={item.noteTitle}
             noteResize={this.noteResize}
             mouseDown={this.mouseDown}
             mouseUp={this.mouseUp}
@@ -118,7 +116,7 @@ class NoteComponent extends Component {
             <Note
               uniqueKey={uniqueKey}
               setNoteValue={setNoteValue}
-              noteValue={noteValue}
+              noteValue={item.noteValue}
             />
           }
           {

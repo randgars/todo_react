@@ -36,9 +36,7 @@ class NotesComponent extends Component {
                 setNoteValue={actions.setNoteValue}
                 setNoteColor={actions.setNoteColor}
                 setNoteTitle={actions.setNoteTitle}
-                noteTitle={item.noteTitle}
-                noteValue={item.noteValue}
-                bgColor={item.color}
+                item={item}
                 notesContainer={this.notesContainer}
               />
             ))

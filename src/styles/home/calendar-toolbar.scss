@@ -1,0 +1,14 @@
+.calendar-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  &>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .calendar-toolbar__date-label {
+    font-size: 1.2em;
+  }
+}

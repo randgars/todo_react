@@ -4,7 +4,6 @@ import React, {
 import '../../styles/home/home.scss';
 
 class HomeComponent extends Component {
-
   render() {
     return (
       <div className="home-component">

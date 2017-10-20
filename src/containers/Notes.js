@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
-import { addNote, deleteNote, setNoteValue, setNoteColor, setNoteTitle } from '../actions/';
+import { getNotes, addNote, deleteNote, setNoteValue, setNoteColor, setNoteTitle } from '../actions/';
 import Main from '../components/notes/Notes';
 
 class Notes extends Component {
@@ -14,18 +14,22 @@ class Notes extends Component {
     this.addNote = this.addNote.bind(this);
   }
 
+  componentDidMount() {
+    this.props.actions.getNotes();
+  }
+
   addNote() {
     const randKey = Math.random().toString(36);
     this.props.actions.addNote(randKey);
   }
 
   render() {
-    const { notesArray } = this.props;
+    const { notesArray, actions } = this.props;
     return (
       <Main
         notesArray={notesArray}
         addNote={this.addNote}
-        actions={this.props.actions}
+        actions={actions}
       />
     );
   }
@@ -48,7 +52,8 @@ function mapDispatchToProps(dispatch) {
     deleteNote,
     setNoteValue,
     setNoteColor,
-    setNoteTitle
+    setNoteTitle,
+    getNotes
   };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;

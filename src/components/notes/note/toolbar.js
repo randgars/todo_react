@@ -87,7 +87,7 @@ class ToolbarComponent extends Component {
             </MenuButton>
           ] : null}
           className="note-component__toolbar"
-          style={{backgroundColor: `rgba(${bgColor.r}, ${bgColor.g}, ${bgColor.b}, ${bgColor.a}`}}
+          style={bgColor && {backgroundColor: `rgba(${bgColor.r}, ${bgColor.g}, ${bgColor.b}, ${bgColor.a}`}}
         />
       </div>
     );

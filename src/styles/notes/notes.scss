@@ -1,11 +1,10 @@
+@import '../cpanel';
+
 .notes-component {
   display: flex;
   flex-direction: column;
   .notes-component__cpanel {
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @extend .cpanel;
   }
   .notes-component__container {
     height: calc(100vh - 144px);

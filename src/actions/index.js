@@ -1,10 +1,18 @@
-import {addNote, deleteNote, setNoteValue, setNoteColor, setNoteTitle} from './note';
+import {
+  addNote,
+  deleteNote,
+  setNoteValue,
+  setNoteColor,
+  setNoteTitle,
+  getNotes
+} from './note';
 
 const actions = {
   addNote,
   deleteNote,
   setNoteColor,
   setNoteValue,
-  setNoteTitle
+  setNoteTitle,
+  getNotes
 };
 module.exports = actions;

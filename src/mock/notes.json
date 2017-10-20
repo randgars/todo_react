@@ -1,0 +1,35 @@
+[
+  {
+    "noteKey": "1",
+    "noteValue": "test note 1",
+    "color": {
+      "r": 255,
+      "g": 0,
+      "b": 0,
+      "a": 1
+    },
+    "noteTitle": "NOTE 1"
+  },
+  {
+    "noteKey": "2",
+    "noteValue": "test note 2",
+    "color": {
+      "r": 255,
+      "g": 0,
+      "b": 0,
+      "a": 1
+    },
+    "noteTitle": "NOTE 2"
+  },
+  {
+    "noteKey": "3",
+    "noteValue": "test note 3",
+    "color": {
+      "r": 255,
+      "g": 0,
+      "b": 0,
+      "a": 1
+    },
+    "noteTitle": "NOTE 3"
+  }
+]
