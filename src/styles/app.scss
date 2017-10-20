@@ -4,6 +4,8 @@
 $md-primary-color: $md-cyan-500;
 $md-secondary-color: $md-grey-400;
 
+$md-switch-ball-fallback-color: $md-cyan-500;
+
 @include react-md-everything;
 
 body {

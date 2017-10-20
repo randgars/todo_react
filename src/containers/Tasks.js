@@ -6,16 +6,16 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import {} from '../actions/';
-import Main from '../components/home/Home';
+import Main from '../components/tasks/Tasks';
 
-class Home extends Component {
+class Tasks extends Component {
   render() {
     const { actions } = this.props;
     return <Main actions={actions} />;
   }
 }
 
-Home.propTypes = {
+Tasks.propTypes = {
   actions: PropTypes.shape({})
 };
 
@@ -30,4 +30,4 @@ function mapDispatchToProps(dispatch) {
   return actionMap;
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Tasks));

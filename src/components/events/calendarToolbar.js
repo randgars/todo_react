@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/home/calendar-toolbar.scss';
+import '../../styles/events/calendar-toolbar.scss';
 
 import { Button } from 'react-md';
 

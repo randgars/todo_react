@@ -4,7 +4,7 @@ import React, {
 import '../../styles/events/events.scss';
 
 import moment from 'moment';
-import { Button, TextField, TimePicker, DatePicker } from 'react-md';
+import { Button, TextField, TimePicker, DatePicker, Switch } from 'react-md';
 
 import BigCalendar from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -18,7 +18,7 @@ BigCalendar.momentLocalizer(moment);
 
 class EventsComponent extends Component {
   render() {
-    const { addEvent, eventStyleGetter, setEventValue } = this.props;
+    const { addEvent, eventStyleGetter, setEventValue, setEventDate, setEventTime } = this.props;
     return (
       <div className="events-component">
         <div className="events-component__cpanel">
@@ -33,11 +33,19 @@ class EventsComponent extends Component {
             id="appointment-date-auto"
             label="Select an appointment date"
             className="md-cell"
+            onChange={setEventDate}
           />
           <TimePicker
             id="time-picker-controlled"
             label="Select time"
             className="md-cell"
+            onChange={setEventTime}
+          />
+          <Switch
+            id="all-day-switch"
+            type="switch"
+            label="All day"
+            name="allDay"
           />
           <Button
             primary

@@ -4,8 +4,12 @@ import {
   setNoteValue,
   setNoteColor,
   setNoteTitle,
-  getNotes
+  getNotes,
 } from './note';
+
+import {
+  addEvent
+} from './event';
 
 const actions = {
   addNote,
@@ -13,6 +17,7 @@ const actions = {
   setNoteColor,
   setNoteValue,
   setNoteTitle,
-  getNotes
+  getNotes,
+  addEvent
 };
 module.exports = actions;

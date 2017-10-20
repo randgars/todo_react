@@ -10,10 +10,10 @@ import NavLink from './navLink';
 import NavigationDrawer from 'react-md/lib/NavigationDrawers';
 
 const navItems = [{
-  label: 'Home',
+  label: 'Tasks',
   to: '/',
   exact: true,
-  icon: 'home',
+  icon: 'playlist_add_check',
 }, {
   label: 'Events',
   to: '/events',
@@ -31,11 +31,9 @@ class AppComponent extends Component {
         <NavigationDrawer
           drawerTitle="ToDo"
           toolbarTitle={this.props.toolbarTitle}
-          navItems={navItems.map((props, index) => {
-            return (
-              <NavLink {...props} key={index} />
-            );
-          })}
+          navItems={navItems.map((props, index) => (
+            <NavLink {...props} key={index} />
+          ))}
           mobileDrawerType={NavigationDrawer.DrawerTypes.TEMPORARY_MINI}
           tabletDrawerType={NavigationDrawer.DrawerTypes.TEMPORARY_MINI}
           desktopDrawerType={NavigationDrawer.DrawerTypes.FULL_HEIGHT}

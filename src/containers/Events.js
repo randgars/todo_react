@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
-import {} from '../actions/';
+import { addEvent } from '../actions/';
 import Main from '../components/events/Events';
 
 class Events extends Component {
@@ -13,15 +13,8 @@ class Events extends Component {
     super(props);
     this.addEvent = this.addEvent.bind(this)
     this.setEventValue = this.setEventValue.bind(this)
-    this.setTimeValue = this.setTimeValue.bind(this)
-    this.handleVisibilityChange = this.handleVisibilityChange.bind(this)
-    this.state = {
-      timePickerVisible: false
-    }
-  }
-
-  addEvent() {
-    
+    this.setEventDate = this.setEventDate.bind(this)
+    this.setEventTime = this.setEventTime.bind(this)
   }
 
   eventStyleGetter(event, start, end, isSelected) {
@@ -44,19 +37,29 @@ class Events extends Component {
     })
   }
 
-  setTimeValue(value) {
+  setEventTime(value) {
     this.setState({
       time: value
     })
   }
 
-  handleVisibilityChange(timePickerVisible) {
-    this.setState({ timePickerVisible });
+  setEventDate(value) {
+    this.setState({
+      date: value
+    })
+  }
+
+  addEvent() {
+    const event = {
+      event: this.state.event,
+      time: this.state.time,
+      date: this.state.date
+    }
+    this.props.actions.addEvent(event);
   }
 
   render() {
     const { actions } = this.props;
-    const { timePickerVisible } = this.state;
 
     return (
       <div className="event-container">
@@ -65,6 +68,8 @@ class Events extends Component {
           eventStyleGetter={this.eventStyleGetter}
           addEvent={this.addEvent}
           setEventValue={this.setEventValue}
+          setEventDate={this.setEventDate}
+          setEventTime={this.setEventTime}
         />
       </div>
     )
@@ -81,7 +86,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = {};
+  const actions = {
+    addEvent
+  };
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;
 }

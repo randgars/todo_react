@@ -26,7 +26,7 @@ class App extends Component {
   getCurrentTitle() {
     let lastSection = location.pathname.substring(location.pathname.lastIndexOf('/') + 1);
     if (lastSection === '') {
-      lastSection = 'Home';
+      lastSection = 'Tasks';
     } else {
       lastSection = lastSection[0].toUpperCase() + lastSection.substring(1);
     }
