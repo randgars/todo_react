@@ -59,6 +59,9 @@ class NoteComponent extends Component {
   }
 
   mouseDown() {
+    if (event.target.id !== 'noteToolbar' && event.target.id !== 'noteToolbar-title') {
+      return;
+    }
     this.setState({
       offsetX: event.offsetX,
       offsetY: event.offsetY
@@ -66,13 +69,13 @@ class NoteComponent extends Component {
     this.props.notesContainer.addEventListener('mousemove', this.mouseMove);
     document.addEventListener('mouseup', this.mouseUp);
     this.props.notesContainer.childNodes.forEach((item) => (item.style.zIndex = '1'));
+    this.notePaper.style.zIndex = '999';
   }
 
   mouseMove() {
     const cursorX = event.clientX - this.props.notesContainer.offsetLeft;
     const cursorY = event.clientY - this.props.notesContainer.offsetTop;
     this.notePaper.style.position = 'absolute';
-    this.notePaper.style.zIndex = '999';
     this.notePaper.style.left = (cursorX - this.state.offsetX) + 'px';
     this.notePaper.style.top = (cursorY - this.state.offsetY) + 'px';
   }

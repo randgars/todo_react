@@ -1,6 +1,7 @@
 import React, {
   Component
 } from 'react';
+import '../../../styles/notes/note/note.scss';
 
 import { Toolbar, MenuButton, ListItem, TextField, Button } from 'react-md';
 
@@ -51,13 +52,13 @@ class ToolbarComponent extends Component {
   render() {
     const {bgColor, openColorPanel, setNoteTitle, uniqueKey} = this.props;
     return (
-      <div
-        ref={(ref) => (this.noteToolbar = ref)}
-      >
+      <div ref={(ref) => (this.noteToolbar = ref)}>
         <Toolbar
+          id="noteToolbar"
+          titleClassName="note-component__toolbar-title"
           title={this.state.changeNoteTitle ?
             <TextField
-              id="floating-center-title"
+              id="noteToolbar-title"
               block
               lineDirection="center"
               placeholder="enter a new title"
@@ -86,7 +87,6 @@ class ToolbarComponent extends Component {
               more_vert
             </MenuButton>
           ] : null}
-          className="note-component__toolbar"
           style={bgColor && {backgroundColor: `rgba(${bgColor.r}, ${bgColor.g}, ${bgColor.b}, ${bgColor.a}`}}
         />
       </div>
