@@ -1,0 +1,17 @@
+@import 'scroll';
+@import '../../node_modules/react-md/src/scss/react-md';
+
+$md-primary-color: $md-cyan-500;
+$md-secondary-color: $md-orange-800;
+
+@include react-md-everything;
+
+body {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+.navItems {
+  display: flex;
+  align-items: center;
+}

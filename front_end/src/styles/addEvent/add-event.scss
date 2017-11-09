@@ -1,0 +1,17 @@
+.add-event-component {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  .add-event-component__block {
+    display: flex;
+    width: 60%;
+    min-width: 500px;
+    align-items: center;
+  }
+  .add-event-component__button {
+    margin-top: 30px;
+  }
+  .add-event-component__toggle {
+    margin-top: 20px;
+  }
+}
