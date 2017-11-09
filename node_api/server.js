@@ -4,12 +4,12 @@ const bodyParser = require('body-parser');
 const db = require('./db');
 
 const app = express();
-const port = 8000;
+const port = 8080;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-db.connect('mongodb://localhost:27017/testapi', (err) => {
+db.connect('mongodb://localhost:27017/todoapi', (err) => {
   if (err) {
     return console.log(err)
   }
