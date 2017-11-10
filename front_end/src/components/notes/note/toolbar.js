@@ -27,6 +27,17 @@ class ToolbarComponent extends Component {
     this.setState({
       changeNoteTitle: false
     });
+    debugger
+    if (!this.state.noteTitle || this.props.noteTitle === this.state.noteTitle) {
+      return;
+    }
+    let title;
+    if (this.state.noteTitle.length > 11) {
+      title = this.state.noteTitle.substr(0, 10) + '...'
+    } else {
+      title = this.state.noteTitle
+    }
+    this.props.setNoteTitle(this.props.uniqueKey, title)
   }
 
   changeNoteTitle() {
@@ -50,7 +61,7 @@ class ToolbarComponent extends Component {
   }
 
   render() {
-    const {bgColor, openColorPanel, setNoteTitle, uniqueKey} = this.props;
+    const {bgColor, openColorPanel} = this.props;
     return (
       <div ref={(ref) => (this.noteToolbar = ref)}>
         <Toolbar
@@ -62,7 +73,7 @@ class ToolbarComponent extends Component {
               block
               lineDirection="center"
               placeholder="enter a new title"
-              onChange={(value) => (setNoteTitle(uniqueKey, value))}
+              onChange={(value) => (this.setState({noteTitle: value}))}
               ref={(ref) => (this.titleFiled = ref)}
               onBlur={this.onChange}
             /> : this.props.noteTitle

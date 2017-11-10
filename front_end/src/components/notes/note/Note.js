@@ -44,8 +44,8 @@ class NoteComponent extends Component {
     });
   }
 
-  changeNoteColor(qwe) {
-    const rgba = qwe.rgb;
+  changeNoteColor(values) {
+    const rgba = values.rgb;
     this.props.setNoteColor(this.props.uniqueKey, {r: rgba.r, g: rgba.g, b: rgba.b, a: rgba.a});
     this.setState({
       displayColorPanel: false

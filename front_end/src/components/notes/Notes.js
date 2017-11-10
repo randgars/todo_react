@@ -9,7 +9,6 @@ import { Button } from 'react-md';
 class NotesComponent extends Component {
   render() {
     const {notesArray, addNote, actions} = this.props;
-
     return (
       <div className="notes-component">
         <div className="notes-component__cpanel">
@@ -31,7 +30,7 @@ class NotesComponent extends Component {
                 ref={(ref) => (this.notePaper = ref)}
                 key={index}
                 index={index}
-                uniqueKey={item.noteKey}
+                uniqueKey={item._id}
                 deleteNote={actions.deleteNote}
                 setNoteValue={actions.setNoteValue}
                 setNoteColor={actions.setNoteColor}

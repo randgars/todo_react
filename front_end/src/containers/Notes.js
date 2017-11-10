@@ -19,8 +19,7 @@ class Notes extends Component {
   }
 
   addNote() {
-    const randKey = Math.random().toString(36);
-    this.props.actions.addNote(randKey);
+    this.props.actions.addNote();
   }
 
   render() {

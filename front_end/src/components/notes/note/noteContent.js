@@ -4,10 +4,18 @@ import '../../../styles/notes/note/note.scss';
 import { TextField } from 'react-md';
 
 const noteContent = (props) => {
+  let noteValue;
+
   const handleChanged = (value) => {
-    const {setNoteValue, uniqueKey} = props;
-    setNoteValue(uniqueKey, value);
+    noteValue = value
   };
+  const onChange = () => {
+    if (!noteValue || props.noteValue === noteValue) {
+      return;
+    }
+    const {setNoteValue, uniqueKey} = props;
+    setNoteValue(uniqueKey, noteValue);
+  }
 
   return (
     <div className="note-content-component">
@@ -18,7 +26,8 @@ const noteContent = (props) => {
         maxRows={17}
         block
         onChange={handleChanged}
-        value={props.noteValue}
+        defaultValue={props.noteValue}
+        onBlur={onChange}
       />
     </div>
   );

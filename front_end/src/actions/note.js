@@ -1,85 +1,145 @@
 import {
-  ADD_NOTE,
-  DELETE_NOTE,
-  SET_NOTE_TITLE,
-  SET_NOTE_VALUE,
-  SET_NOTE_COLOR,
-  GET_NOTES
+  ADD_NOTE_REQUEST, ADD_NOTE_SUCCESS, ADD_NOTE_FAILURE,
+  DELETE_NOTE_REQUEST, DELETE_NOTE_SUCCESS, DELETE_NOTE_FAILURE,
+  SET_NOTE_TITLE_REQUEST, SET_NOTE_TITLE_SUCCESS, SET_NOTE_TITLE_FAILURE,
+  SET_NOTE_VALUE_REQUEST, SET_NOTE_VALUE_SUCCESS, SET_NOTE_VALUE_FAILURE,
+  SET_NOTE_COLOR_REQUEST, SET_NOTE_COLOR_SUCCESS, SET_NOTE_COLOR_FAILURE,
+  GET_NOTES_REQUEST, GET_NOTES_SUCCESS, GET_NOTES_FAILURE
 } from './const';
+
+import axios from 'axios'
 
 export function getNotes() {
   return (dispatch) => {
-    let notesArray = localStorage.getItem('notes');
-    if (!notesArray) {
-      notesArray = localStorage.setItem('notes', '[]')
-    }
-    dispatch({ type: GET_NOTES, notes: JSON.parse(notesArray) });
+    dispatch({ type: GET_NOTES_REQUEST });
+    axios.get('http://localhost:8080/notes')
+      .then(res => {
+        dispatch({ type: GET_NOTES_SUCCESS, notes: res.data });
+      },
+      err => {
+        dispatch({ type: GET_NOTES_FAILURE, error: err });
+      })
+      .catch(err => {
+        window.console.log(err)
+      })
   };
 }
 
-export function addNote(key) {
+export function addNote() {
   return (dispatch) => {
-    const note = {
-      noteKey: key,
+    const data = {
       noteValue: '',
       color: {r: 255, g: 255, b: 255, a: 1},
       noteTitle: 'Note'
     }
-    const notesArray = JSON.parse(localStorage.getItem('notes'));
-    notesArray.push(note);
-    localStorage.setItem('notes', JSON.stringify(notesArray))
-    dispatch({ type: ADD_NOTE, notes: notesArray });
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    dispatch({ type: ADD_NOTE_REQUEST });
+    axios.post('http://localhost:8080/notes/add', data, config)
+      .then(res => {
+        dispatch({ type: ADD_NOTE_SUCCESS });
+        dispatch(getNotes())
+      },
+      err => {
+        dispatch({ type: ADD_NOTE_FAILURE, error: err });
+      })
+      .catch(err => {
+        window.console.log(err)
+      })
   };
 }
 
-export function setNoteTitle(key, title) {
+export function setNoteTitle(id, title) {
   return (dispatch) => {
-    const notesArray = JSON.parse(localStorage.getItem('notes'));
-    for (let i = 0; i < notesArray.length; i++) {
-      if (notesArray[i].noteKey === key) {
-        notesArray[i].noteTitle = title;
+    const data = {
+      noteTitle: title
+    }
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
       }
     }
-    localStorage.setItem('notes', JSON.stringify(notesArray))
-    dispatch({ type: SET_NOTE_TITLE, notes: notesArray });
+    dispatch({ type: SET_NOTE_TITLE_REQUEST });
+    axios.put(`http://localhost:8080/notes/update/${id}`, data, config)
+      .then(res => {
+        dispatch({ type: SET_NOTE_TITLE_SUCCESS });
+        dispatch(getNotes())
+      },
+      err => {
+        dispatch({ type: SET_NOTE_TITLE_FAILURE, error: err });
+      })
+      .catch(err => {
+        window.console.log(err)
+      })
   };
 }
 
-export function setNoteValue(key, value) {
+export function setNoteValue(id, value) {
   return (dispatch) => {
-    const notesArray = JSON.parse(localStorage.getItem('notes'));
-    for (let i = 0; i < notesArray.length; i++) {
-      if (notesArray[i].noteKey === key) {
-        notesArray[i].noteValue = value;
+    const data = {
+      noteValue: value
+    }
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
       }
     }
-    localStorage.setItem('notes', JSON.stringify(notesArray))
-    dispatch({ type: SET_NOTE_VALUE, notes: notesArray });
+    dispatch({ type: SET_NOTE_VALUE_REQUEST });
+    axios.put(`http://localhost:8080/notes/update/${id}`, data, config)
+      .then(res => {
+        dispatch({ type: SET_NOTE_VALUE_SUCCESS });
+        dispatch(getNotes())
+      },
+      err => {
+        dispatch({ type: SET_NOTE_VALUE_FAILURE, error: err });
+      })
+      .catch(err => {
+        window.console.log(err)
+      })
   };
 }
 
-export function setNoteColor(key, bgColor) {
+export function setNoteColor(id, bgColor) {
   return (dispatch) => {
-    const notesArray = JSON.parse(localStorage.getItem('notes'));
-    for (let i = 0; i < notesArray.length; i++) {
-      if (notesArray[i].noteKey === key) {
-        notesArray[i].color = bgColor;
+    const data = {
+      color: bgColor
+    }
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
       }
     }
-    localStorage.setItem('notes', JSON.stringify(notesArray))
-    dispatch({ type: SET_NOTE_COLOR, notes: notesArray });
+    dispatch({ type: SET_NOTE_COLOR_REQUEST });
+    axios.put(`http://localhost:8080/notes/update/${id}`, data, config)
+      .then(res => {
+        dispatch({ type: SET_NOTE_COLOR_SUCCESS });
+        dispatch(getNotes())
+      },
+      err => {
+        dispatch({ type: SET_NOTE_COLOR_FAILURE, error: err });
+      })
+      .catch(err => {
+        window.console.log(err)
+      })
   };
 }
 
-export function deleteNote(key) {
+export function deleteNote(id) {
   return (dispatch) => {
-    const notesArray = JSON.parse(localStorage.getItem('notes'));
-    for (let i = 0; i < notesArray.length; i++) {
-      if (notesArray[i].noteKey === key) {
-        notesArray.splice(i, 1);
-      }
-    }
-    localStorage.setItem('notes', JSON.stringify(notesArray))
-    dispatch({ type: DELETE_NOTE, notes: notesArray });
+    dispatch({ type: DELETE_NOTE_REQUEST });
+    axios.delete(`http://localhost:8080/notes/delete/${id}`)
+      .then(res => {
+        dispatch({ type: DELETE_NOTE_SUCCESS });
+        dispatch(getNotes())
+      },
+      err => {
+        dispatch({ type: DELETE_NOTE_FAILURE, error: err });
+      })
+      .catch(err => {
+        window.console.log(err)
+      })
   };
 }

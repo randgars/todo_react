@@ -21,30 +21,38 @@ exports.findById = function (req, res) {
 }
 
 exports.create = function (req, res) {
-  const note = {
-    text: req.body.body,
-    title: req.body.title
+  const data = {
+    noteValue: req.body.noteValue,
+    color: req.body.color,
+    noteTitle: req.body.noteTitle
   };
-  Notes.create(note, function (err, result) {
+  Notes.create(data, function (err, result) {
     if (err) {
       console.log(err);
       return res.sendStatus(500)
     }
-    res.send(note);
+    res.send(data);
   })
 }
 
 exports.update = function (req, res) {
-  const note = {
-    text: req.body.body,
-    title: req.body.title
-  };
-  Notes.update(req.params.id, note, function (err, result) {
+  const id = req.params.id;
+  Notes.findById(id, function (err, item) {
     if (err) {
       console.log(err);
       return res.sendStatus(500)
     }
-    res.sendStatus(200);
+    for (let key in req.body) {
+      item[key] = req.body[key]
+    }
+
+    Notes.update(id, item, function (err, result) {
+      if (err) {
+        console.log(err);
+        return res.sendStatus(500)
+      }
+      res.send(item);
+    })
   })
 }
 

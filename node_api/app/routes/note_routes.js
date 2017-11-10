@@ -6,9 +6,9 @@ module.exports = function(app, db) {
 
   app.get('/notes/:id', notesController.findById);
 
-  app.post('/notes', notesController.create);
+  app.post('/notes/add', notesController.create);
 
-  app.put('/notes/:id', notesController.update);
+  app.put('/notes/update/:id', notesController.update);
 
-  app.delete('/notes/:id', notesController.delete);
+  app.delete('/notes/delete/:id', notesController.delete);
 };
